@@ -1,0 +1,139 @@
+Environment: macOS Mojave 10.14.6
+
+1) See where I am === pwd
+2) Create folder === mkdir homework_1
+3) Go to the folder === cd homework_1
+4) Create 3 folders === mkdir f_1 f_2 f_3
+5) Go to any folder === cd f_1
+6) Create 5 files (3 txt, 2 json) === touch 1.txt 2.txt 3.txt 4.json 5.json
+7) Create 3 folders === mkdir t_1 t_2 t_3
+8) List folder contents === ls -la
+9) + Open any txt file === vim 1.txt
+10) + write something there, any text ===
+The Mac Terminal Commands Cheat Sheet
+-Ctrl + A	Go to the beginning of the line you are currently typing on. This also works for most text input fields system wide. Netbeans being one exception
+-Ctrl + E	Go to the end of the line you are currently typing on. This also works for most text input fields system wide. Netbeans being one exception
+-Ctrl + L	Clears the Screen
+-Cmd + K	Clears the Screen
+-Ctrl + U	Cut everything backwards to beginning of line
+-Ctrl + K	Cut everything forward to end of line
+-Ctrl + W	Cut one word backwards using white space as delimiter
+-Ctrl + Y	Paste whatever was cut by the last cut command
+-Ctrl + H	Same as backspace
+-Ctrl + C	Kill whatever you are running. Also clears everything on current line
+-Ctrl + D	Exit the current shell when no process is running, or send EOF to a the running process
+-Ctrl + Z	Puts whatever you are running into a suspended background process. fg restores it
+-Ctrl + _	Undo the last command. (Underscore. So it's actually Ctrl + Shift + minus)
+-Ctrl + T	Swap the last two characters before the cursor
+-Ctrl + F	Move cursor one character forward
+-Ctrl + B	Move cursor one character backward
+-Option + →	Move cursor one word forward
+-Option + ←	Move cursor one word backward
+-Esc + T	Swap the last two words before the cursor
+-Esc + Backspace Cut one word backwards using none alphabetic characters as delimiters
+-Tab	Auto-complete files and folder names
+
+11) + save and exit === Esc -> :wq -> Enter
+12) Exit the folder one level up === cd ..
+—
+13) move any 2 files you created to any other folder ===
+mv f_1/{1.txt,2.txt} f_2
+
+14) copy any 2 files you created to any other folder ===
+cp f_1/{4.json,5.json} f_1/t_1
+
+15) Find file by name === 
+a)find . -type f -name "filename (full)" 
+b)find . -type f -name "name*" (if you only know the beginning of the file name)
+c)find . -type f -name "*.txt" (if you only knew file format)
+
+a)Example: find . -type f -name "1.txt"
+
+b)Example: find . -type f -name "1*"
+
+c)Example: find . -type f -name "*.txt"
+
+16) view the contents of the file in real time ===  
+tail -f f_2/1.txt
+
+Exit -> Control C
+
+17) output the first few lines from a text file === 
+a)head f_2/1.txt 
+(first 10 lines)
+
+b)head -2 f_2/1.txt 
+(first 2 lines)
+
+18) output the last few lines from a text file  === 
+tail f_2/1.txt
+(last 10 lines) 
+
+tail - 3 f_2/1.txt
+(last 3 lines)
+
+19) view the contents of a long file (less command) === less f_2/1.txt
+
+If the file contains several pages, you must press the spacebar to move to the next one.
+/search phrase
+If the phrase contains spaces, you must add a backslash (\) before each space:
+/I\ read\ the\ other\ day
+
+Key Action
+J or down arrow - Scroll down one line
+K or up arrow - Scroll up one line
+N Find the next occurrence of the search text
+P Find the previous occurrence of the search text
+Q Quit less
+
+20) output to console date and time === date
+=========
+
+*man - gives information about the command 
+
+Exercise *
+1) Send an http request to the server.
+http://162.55.220.72:5005/terminal-hw-request
+
+=== curl "http://162.55.220.72:5005/terminal-hw-request"
+
+{"Intro":"Hello!! This is your the first response from server","Tasks":{"Task_1":"Send the next URL in terminal: http://162.55.220.72:5005/get_method?name=(set_your_String)&age=(set_your_number)","result":["Your_String","Your_number"]}}
+
+=== curl "http://162.55.220.72:5005/get_method?name=Larina&age=25"
+
+Result: ["Larina","25"]
+
+2) Write a script that will automatically execute steps 3, 4, 5, 6, 7, 8, 13
+
+pwd
+/Users/larinavasileva/Downloads
+
+nano bash_script_3.sh
+
+#!/bin/bash
+
+cd homework_1
+mkdir f_13 f_14 f_15
+cd f_13
+touch 17.txt 18.txt 19.txt 20.json 21.json
+mkdir t_4 t_5 t_6
+ls -la
+mv {17.txt,18.txt} ../f_14
+echo «Good job!»
+
+Control O -> Control X
+
+bash bash_script_3.sh
+
+total 0
+drwxr-xr-x  10 larinavasileva  staff  320 12 фев 00:32 .
+drwxr-xr-x  22 larinavasileva  staff  704 12 фев 00:32 ..
+-rw-r--r--   1 larinavasileva  staff    0 12 фев 00:32 17.txt
+-rw-r--r--   1 larinavasileva  staff    0 12 фев 00:32 18.txt
+-rw-r--r--   1 larinavasileva  staff    0 12 фев 00:32 19.txt
+-rw-r--r--   1 larinavasileva  staff    0 12 фев 00:32 20.json
+-rw-r--r--   1 larinavasileva  staff    0 12 фев 00:32 21.json
+drwxr-xr-x   2 larinavasileva  staff   64 12 фев 00:32 t_4
+drwxr-xr-x   2 larinavasileva  staff   64 12 фев 00:32 t_5
+drwxr-xr-x   2 larinavasileva  staff   64 12 фев 00:32 t_6
+Good job!
